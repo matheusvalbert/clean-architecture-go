@@ -14,28 +14,9 @@ Primeiramente suba o banco o cantâiner do docker:
 docker compose up -d
 ```
 
-Realize a configuração da fila do RabbitMQ e crie a tabela no banco de dados.
-
-Configurações do RabbitMQ e mostrar a mensagem:
-
-```text
-Entrar em http://localhost:15672 (Login: guest | Password: guest)
-Queues -> Add new queue Name: orders -> Add queue
-orders -> bindings -> from exchange: amq.direct -> bind
-Get messages -> Get Message(s) -> mensagem!
-```
-
-Query para criação da tabela no banco de dados:
-
-```sql
-CREATE TABLE orders
-(
-    id          varchar(255) NOT NULL,
-    price       float        NOT NULL,
-    tax         float        NOT NULL,
-    final_price float        NOT NULL,
-    PRIMARY KEY (id)
-);
+Para rodar os programa em go, basta entrar na pasta `cmd/ordersystem` e executar:
+```bash
+go run main.go wire_gen.go
 ```
 
 ## Criar nova mensagem
